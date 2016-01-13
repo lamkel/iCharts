@@ -3,7 +3,7 @@ Type: Package
 Title: OpenCPU App Displaying Interactive Graphics
 Version: 1.0
 Date: 2016-01-11
-Author: Kelvin Lam 
+Author: Ramnath Vaidyanathan
 Maintainer: Kelvin Lam
 Description: OpenCPU App Displaying Interactive Graphics
 License: MIT
