@@ -1,0 +1,54 @@
+  <html>
+
+<head>
+<title>Title</title>
+</head>
+
+<body>
+
+<p>This is an R HTML document. When you click the <b>Knit HTML</b> button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+
+<!--begin.rcode
+summary(cars)
+end.rcode-->
+
+<p>You can also embed plots, for example:</p>
+
+<!--begin.rcode fig.width=7, fig.height=6
+plot(cars)
+end.rcode-->
+
+</body>
+
+function SochiCtrl($scope){
+  $scope.events = ['all', 'alpine-skiing', 'cross-country', 'freestyle-skiing', 
+                   'nordic-combined',  'ski-jumping', 'biathlon', 'short-track', 'snowboard', 
+                   'bobsleigh', 'figure-skating', 'luge', 'skeleton', 'speed-skating']
+  $scope.event = $scope.events[0]
+  $scope.years = ["2014", "2010", "2006", "2002", "1996", "1992", "1988", "1984"]
+  $scope.year = $scope.years[0]    
+  
+  $scope.makeChart = function(){
+    var req = ocpu.rpc("inlineChart",  {"xvar": $scope.controls.x.value, 
+                                        "yvar": $scope.controls.y.value,
+                                        "plottype": $scope.controls.plottype.value
+                                        "pointcolor": $scope.controls.pointcolor.value,
+                                        "groupcolor": $scope.controls.groupcolor.value,
+                                        "pointsize": $scope.controls.pointsize.value
+                                        "groupsize": $scope.controls.groupsize.value},
+                       function(output){   
+                         $('#sochi').html(output)
+                       }).fail(function(text){
+                         alert("Error: " + req.responseText);
+                       });
+  }
+  
+  $scope.$watchCollection('[xvar, yvar, plottype, groupcolor, pointsize]', function(newValues){
+    $scope.makeChart({xvar: newValues[0], yvar: newValues[1], plottype: newValues[2], 
+                      groupcolor: newValues[3], pointsize: newValues[4]
+                     })
+  })
+}
+
+
+</html>
