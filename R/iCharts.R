@@ -51,17 +51,7 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
    p1$xAxis(axisLabel = xvar)
    p1$yAxis(axisLabel = yvar)
    
-   # Color selection for all points prior to applying grouping colours #
-   plottype <- c("scatterChart", "multiBarChart")
-   colorchoice <- c("blue", "green", "red", "orange", "black")
-   
-   p1$addControls("x", value = numvars[1], values = numvars)
-   p1$addControls("y", value = numvars[2], values = numvars)
-   p1$addControls("plottype", value = plottype[1], values = plottype)
-   p1$addControls("pointcolor", value = colorchoice[1], values = colorchoice)
-   p1$addControls("groupcolor", value = "<Overall>", values = c("<Overall>",chrvars))
-   p1$addControls("pointsize", value = 10, values = c(5:20))
-   p1$addControls("groupsize", value = "<Equal Size>", values = c("<Equal Size>",numvars))
+   # All controls are done in iCharts #
    
    return(p1)
 }   
