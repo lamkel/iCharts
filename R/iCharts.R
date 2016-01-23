@@ -1,6 +1,6 @@
 # NVD3 scatterChart #
 
-InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){
+InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
   
    # communicate with Tyler to seek location of file #
   # communicate with Tyler to seek location of file #
@@ -21,7 +21,7 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
    names(overall)[1:2] <- c("OVERALL", "EQUAL SIZE")
 
    # Chart function #
-   p1 <- rCharts::nPlot(as.formula(paste(yvar,"~",xvar)),  
+   p1 <- rCharts::nPlot(as.formula(paste(yvalue,"~",xvalue)),  
                         data = cbind(dat, overall), 
                         group = groupcolor,
                         type = plottype,
@@ -46,8 +46,8 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
      showDistY = TRUE
    ) 
    
-   p1$xAxis(axisLabel = xvar)
-   p1$yAxis(axisLabel = yvar)
+   p1$xAxis(axisLabel = xvalue)
+   p1$yAxis(axisLabel = yvalue)
    
    # Avoid using addcontrols to retrieve control values #
    # Use save instead #
@@ -55,15 +55,15 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
    return(p1)
 }   
 
-saveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
- p1 <- InteractiveChart(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+saveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
+ p1 <- InteractiveChart(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 700) 
  p1$save('output.html', cdn = T) # To pull $scope.controls #
    return(invisible()) 
 } 
 
-inlineChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
- p1 <- InteractiveChart(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+inlineChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
+ p1 <- InteractiveChart(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 650) 
  paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 
