@@ -1,19 +1,17 @@
 # NVD3 scatterChart #
 
-memory.limit(1e13)
-
-require(devtools)
-install_github('ramnathv/rCharts')
-
-devtools::install_github('lamkel/igraph')
-library(opencpu)
-opencpu$browse('/library/igraph/www')
-
 InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){
   
    # communicate with Tyler to seek location of file #
-   dat <- data.table::fread("C:/Users/Kelvin/Dropbox/Statistics Solutions (my own Folder)/testdata_scatterchart.csv",
-                            data.table=FALSE, verbose = TRUE, na.strings="", header=TRUE) 
+  # communicate with Tyler to seek location of file #
+  #   dat <- data.table::fread("C:/Users/Kelvin/Dropbox/Statistics Solutions (my own Folder)/testdata_scatterchart.csv",
+  #                            data.table=FALSE, verbose = TRUE, na.strings="", header=TRUE) 
+  
+  # Work on test data in dropbox #
+  dbcsv <- "testdata_scatterchart.csv"  
+  mykey <- "qcbiamjetc7tvbc"
+  dat <- repmis::source_DropboxData(dbcsv, key=mykey, sep=",", header=TRUE)
+  
 
    numvars <- names(dat)[which(sapply(dat, class) %in% c("integer","numeric"))] # Can be expanded #
    chrvars <- names(dat)[which(sapply(dat, class) %in% c("character","logical"))] # Can be expanded (e.g. dates) #
@@ -61,8 +59,8 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
    p1$addControls("y", value = numvars[2], values = numvars)
    p1$addControls("plottype", value = plottype[1], values = plottype)
    p1$addControls("pointcolor", value = colorchoice[1], values = colorchoice)
-   p1$addControls("pointsize", value = 10, values = c(5:20))
    p1$addControls("groupcolor", value = "<Overall>", values = c("<Overall>",chrvars))
+   p1$addControls("pointsize", value = 10, values = c(5:20))
    p1$addControls("groupsize", value = "<Equal Size>", values = c("<Equal Size>",numvars))
    
    return(p1)
@@ -71,14 +69,14 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
 saveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
  p1 <- InteractiveChart(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 700) 
- p1$save('output.html', cdn = T) 
+ p1$save('output.html', cdn = T) # To pull $scope.controls and ng.controls #
    return(invisible()) 
 } 
 
 inlineChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
  p1 <- InteractiveChart(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 650) 
- paste(capture.output(p1$show('inline')), collapse ='\n') 
+ paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 
 
 
