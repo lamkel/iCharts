@@ -74,8 +74,8 @@ function iChartsCtrl($scope){
     $scope.pointsizes = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     $scope.groupsizes = [ "EQUAL SIZE", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
     
-    $scope.xvalue = $scope.xvalues[0]
-    $scope.yvalue = $scope.yvalues[1]
+    $scope.xvalue = $scope.xvalues[10]
+    $scope.yvalue = $scope.yvalues[11]
     $scope.plottype = $scope.plottypes[0] 
     $scope.pointcolor = $scope.pointcolors[0]
     $scope.groupcolor = $scope.groupcolors[0]
@@ -100,8 +100,8 @@ function iChartsCtrl($scope){
   
   $scope.$watchCollection(['xvar', 'yvar', 'plottype', 'pointcolor', 'groupcolor', 'pointsize', 'groupsize'], function(newValues){
     console.log(newValues)
-    $scope.makeChart({xvar: newValues[3], 
-                      yvar: newValues[4], 
+    $scope.makeChart({xvar: newValues[0], 
+                      yvar: newValues[1], 
                       plottype: newValues[2], 
                       pointcolor: newValues[3],
                       groupcolor: newValues[4], 
