@@ -12,4 +12,4 @@ Imports:
   htmlwidgets,
   repmis
 Collate:
-  sspigraphs.R
+  iCharts.R
