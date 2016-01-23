@@ -34,7 +34,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    
    eval(parse(text = paste0("p1$chart(size = '#! function(d){return d.", groupsize, "} !#')")))
    
-   if (groupcolor == "Overall") {
+   if (groupcolor == "OVERALL") {
      p1$chart(color = '#! function(d){return d.color} !#')
    }
    
