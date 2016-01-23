@@ -115,13 +115,13 @@ $scope.controls = {
 } 
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {"xvar": $scope.controls.x.value, 
-                                        "yvar": $scope.controls.y.value,
-                                        "plottype": $scope.controls.plottype.value,
-                                        "pointcolor": $scope.controls.pointcolor.value,
-                                        "groupcolor": $scope.controls.groupcolor.value,
-                                        "pointsize": $scope.controls.pointsize.value,
-                                        "groupsize": $scope.controls.groupsize.value},
+    var req = ocpu.rpc("inlineChart",  {xvar: $scope.controls.x.value, 
+                                        yvar: $scope.controls.y.value,
+                                        plottype: $scope.controls.plottype.value,
+                                        pointcolor: $scope.controls.pointcolor.value,
+                                        groupcolor: $scope.controls.groupcolor.value,
+                                        pointsize: $scope.controls.pointsize.value,
+                                        groupsize: $scope.controls.groupsize.value},
                        function(output){   
                          $('#iCharts').html(output)
                        }).fail(function(text){
