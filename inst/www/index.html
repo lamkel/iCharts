@@ -84,8 +84,8 @@ function iChartsCtrl($scope){
   
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {"xvar": $scope.xvalue, 
-                                        "yvar": $scope.yvalue,
+    var req = ocpu.rpc("inlineChart",  {xvar: $scope.xvalue, 
+                                        yvar: $scope.yvalue,
                                         plottype: $scope.plottype,
                                         pointcolor: $scope.pointcolor,
                                         groupcolor: $scope.groupcolor,
@@ -98,7 +98,7 @@ function iChartsCtrl($scope){
                        });
   }
   
-  $scope.$watchCollection('[xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize]', function(newValues){
+  $scope.$watchCollection(['xvar', 'yvar', 'plottype', 'pointcolor', 'groupcolor', 'pointsize', 'groupsize'], function(newValues){
     console.log(newValues)
     $scope.makeChart({xvar: newValues[0], 
                       yvar: newValues[1], 
