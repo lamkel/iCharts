@@ -1,4 +1,4 @@
-Package: igraphs
+Package: iCharts
 Type: Package
 Title: OpenCPU App Displaying Interactive Graphics
 Version: 1.0
@@ -10,6 +10,7 @@ License: MIT
 Imports:
   XML,
   reshape2,
-  rCharts
+  rCharts,
+  repmis
 Collate:
   sspigraphs.R
