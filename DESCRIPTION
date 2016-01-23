@@ -3,8 +3,8 @@ Type: Package
 Title: Statistics Solutions OpenCPU App Displaying Interactive Graphics
 Version: 1.0
 Date: 2016-01-24
-Author: Kelvin Lam
-Maintainer: Kelvin Lam
+Author: Ramnath Vaidyanathan, Kelvin Lam
+Maintainer: Kelvin Lam <lamkel@outlook.com>
 Description: OpenCPU App Displaying Interactive Graphics
 License: MIT
 Imports:
