@@ -100,8 +100,8 @@ function iChartsCtrl($scope){
   
   $scope.$watchCollection('[xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize]', function(newValues){
     console.log(newValues)
-    $scope.makeChart({xvar: newValues[0], 
-                      yvar: newValues[1], 
+    $scope.makeChart({xvar: "Yrs1", 
+                      yvar: "Yrs4", 
                       plottype: newValues[2], 
                       pointcolor: newValues[3],
                       groupcolor: newValues[4], 
