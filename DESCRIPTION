@@ -11,4 +11,6 @@ Imports:
   rCharts,
   htmlwidgets,
   repmis
+Collate:
+  iCharts.R  
 
