@@ -18,7 +18,7 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
       
    # Run before generating plots #
    overall <- data.frame(Overall="Overall", size = 1, color = pointcolor)
-   names(overall)[1:2] <- c("<Overall>", "<Equal Size>")
+   names(overall)[1:2] <- c("OVERALL", "EQUAL SIZE")
 
    # Chart function #
    p1 <- rCharts::nPlot(as.formula(paste(yvar,"~",xvar)),  
