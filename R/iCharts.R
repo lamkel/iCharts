@@ -44,14 +44,13 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
      showControls = FALSE,
      showDistX = TRUE,
      showDistY = TRUE
-     #  scatter.onlyCircles = FALSE,
-     #  shape = '#! function(d){return d.shape} !#',
    ) 
    
    p1$xAxis(axisLabel = xvar)
    p1$yAxis(axisLabel = yvar)
    
-   # All controls are done in iCharts #
+   # Avoid using addcontrols to retrieve control values #
+   # Use save instead #
    
    return(p1)
 }   
@@ -59,7 +58,7 @@ InteractiveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, point
 saveChart <- function(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
  p1 <- InteractiveChart(xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 700) 
- p1$save('output.html', cdn = T) # To pull $scope.controls and ng.controls #
+ p1$save('output.html', cdn = T) # To pull $scope.controls #
    return(invisible()) 
 } 
 
