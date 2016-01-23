@@ -42,86 +42,60 @@
   </div> 
         <div class='col-md-3' ng-controller='iChartsCtrl'>
           <label><b>Select  X variable :</b></label>
-    		   <select class='form form-control' ng-model="controls.x.value" 
-            ng-options="controls.x.value for controls.x.value in controls.x.values"></select><br>
+    		   <select class='form form-control' ng-model="xvalue" 
+            ng-options="xvalue for xvalue in xvalues"></select><br>
           <label><b>Select  Y variable :</b></label>
-    		   <select class='form form-control' ng-model="controls.y.value" 
-            ng-options="controls.y.value for controls.y.value in controls.y.values"></select><br>
+    		   <select class='form form-control' ng-model="yvalue" 
+            ng-options="yvalue for yvalue in yvalues"></select><br>
           <label><b>Select Type of Plot :</b></label>
-    		   <select class='form form-control' ng-model="controls.plottype.value" 
-            ng-options="controls.plottype.value for controls.plottype.value in controls.plottype.values"></select><br>
+    		   <select class='form form-control' ng-model="plottype" 
+            ng-options="plottype for plottype in plottypes"></select><br>
           <label><b>Select Point Color :</b></label>
-    		   <select class='form form-control' ng-model="controls.pointcolor.value" 
-            ng-options="controls.pointcolor.value for controls.pointcolor.value in controls.pointcolor.values"></select><br>
+    		   <select class='form form-control' ng-model="pointcolor" 
+            ng-options="pointcolor for pointcolor in pointcolors"></select><br>
           <label><b>Select Group Color by :</b></label>
-    		   <select class='form form-control' ng-model="controls.groupcolor.value" 
-            ng-options="controls.groupcolor.value for controls.groupcolor.value in controls.groupcolor.values"></select><br>
+    		   <select class='form form-control' ng-model="groupcolor" 
+            ng-options="groupcolor for groupcolor in groupcolors"></select><br>
           <label><b>Select Point Size :</b></label>
-    		   <select class='form form-control' ng-model="controls.pointsize.value" 
-            ng-options="controls.pointsize.value for controls.pointsize.value in controls.pointsize.values"></select><br>
+    		   <select class='form form-control' ng-model="pointsize" 
+            ng-options="pointsize for pointsize in pointsizes"></select><br>
           <label><b>Select Group Size by :</b></label>
-    		   <select class='form form-control' ng-model="controls.groupsize.value" 
-            ng-options="controls.groupsize.value for controls.groupsize.value in controls.groupsize.values"></select><br>
+    		   <select class='form form-control' ng-model="groupsize" 
+            ng-options="groupsize for groupsize in groupsizes"></select><br>
         </div>
+
    <div class='col-md-9'><div id='iCharts'></div></div>
  </div>
 </body>
 
 <script>
 function iChartsCtrl($scope){
-$scope.controls = {
- "x": {
- "name": "x",
-"value": "Q1Culture",
-"values": [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24" ],
-"label": "Select  x :" 
-},
-"y": {
- "name": "y",
-"value": "Q1Infrastructure",
-"values": [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24" ],
-"label": "Select  y :" 
-},
-"plottype": {
- "name": "plottype",
-"value": "scatterChart",
-"values": [ "scatterChart", "multiBarChart" ],
-"label": "Select  plottype :" 
-},
-"pointcolor": {
- "name": "pointcolor",
-"value": "blue",
-"values": [ "blue", "green", "red", "orange", "black" ],
-"label": "Select  pointcolor :" 
-},
-"pointsize": {
- "name": "pointsize",
-"value":     5,
-"values": [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ],
-"label": "Select  pointsize :" 
-},
-"groupcolor": {
- "name": "groupcolor",
-"value": "<Overall>",
-"values": [ "<Overall>", "MetroMicroRural", "Stakeholder", "Region", "EcTier" ],
-"label": "Select  groupcolor :" 
-},
-"groupsize": {
- "name": "groupsize",
-"value": "<Equal Size>",
-"values": [ "<Equal Size>", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24" ],
-"label": "Select  groupsize :" 
-} 
-} 
+  
+    $scope.xvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding",                         "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed",                         "TOTALq1_24" ]
+    $scope.yvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure", "Q2Leaders", "Q2Funding",                         "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed",                         "TOTALq1_24" ]
+    $scope.plottypes = [ "scatterChart", "multiBarChart" ]
+    $scope.pointcolors = [ "blue", "green", "red", "orange", "black" ]
+    $scope.groupcolors = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]
+    $scope.pointsizes = [ "<Overall>", "MetroMicroRural", "Stakeholder", "Region", "EcTier" ]
+    $scope.groupsizes = [ "<Equal Size>", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Q2Culture", "Q2Infrastructure",                                   "Q2Leaders", "Q2Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed",                         "q23summed", "q24summed", "TOTALq1_24" ]
+    
+    $scope.xvalue = $scope.xvalues[0]
+    $scope.yvalue = $scope.yvalues[1]
+    $scope.plottype = $scope.plottypes[0] 
+    $scope.pointcolor = $scope.pointcolors[0]
+    $scope.groupcolor = $scope.groupcolors[0]
+    $scope.pointsize = $scope.pointsizes[0]
+    $scope.groupsize = $scope.groupsizes[0]
+  
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {xvar: $scope.controls.x.value, 
-                                        yvar: $scope.controls.y.value,
-                                        plottype: $scope.controls.plottype.value,
-                                        pointcolor: $scope.controls.pointcolor.value,
-                                        groupcolor: $scope.controls.groupcolor.value,
-                                        pointsize: $scope.controls.pointsize.value,
-                                        groupsize: $scope.controls.groupsize.value},
+    var req = ocpu.rpc("inlineChart",  {xvar: $scope.xvalue, 
+                                        yvar: $scope.yvalue,
+                                        plottype: $scope.plottype,
+                                        pointcolor: $scope.pointcolor,
+                                        groupcolor: $scope.groupcolor,
+                                        pointsize: $scope.pointsize,
+                                        groupsize: $scope.groupsize},
                        function(output){   
                          $('#iCharts').html(output)
                        }).fail(function(text){
