@@ -98,7 +98,7 @@ function iChartsCtrl($scope){
                        });
   }
   
-  $scope.$watchCollection(['xvar', 'yvar', 'plottype', 'pointcolor', 'groupcolor', 'pointsize', 'groupsize'], function(newValues){
+  $scope.$watchCollection('[xvar, yvar, plottype, pointcolor, groupcolor, pointsize, groupsize]', function(newValues){
     console.log(newValues)
     $scope.makeChart({xvar: newValues[0], 
                       yvar: newValues[1], 
