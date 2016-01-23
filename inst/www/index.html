@@ -84,13 +84,13 @@ function iChartsCtrl($scope){
   
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {plottype: $scope.plottype,                                         
+    var req = ocpu.rpc("inlineChart",  {xvar: $scope.xvalue, 
+                                        yvar: $scope.yvalue,
+                                        plottype: $scope.plottype,                                         
                                         pointcolor: $scope.pointcolor,
                                         groupcolor: $scope.groupcolor,
                                         pointsize: $scope.pointsize,
-                                        groupsize: $scope.groupsize,
-                                        xvar: $scope.xvalue, 
-                                        yvar: $scope.yvalue},
+                                        groupsize: $scope.groupsize},
                        function(output){   
                          $('#iCharts').html(output)
                        }).fail(function(text){
