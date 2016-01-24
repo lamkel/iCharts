@@ -2,7 +2,6 @@
 
 InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
   
-   # communicate with Tyler to seek location of file #
   # communicate with Tyler to seek location of file #
   #   dat <- data.table::fread("C:/Users/Kelvin/Dropbox/Statistics Solutions (my own Folder)/testdata_scatterchart.csv",
   #                            data.table=FALSE, verbose = TRUE, na.strings="", header=TRUE) 
@@ -17,7 +16,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    chrvars <- names(dat)[which(sapply(dat, class) %in% c("character","logical"))] # Can be expanded (e.g. dates) #
       
    # Run before generating plots #
-   overall <- data.frame(Overall="Overall", size = 1, color = pointcolor)
+   overall <- data.frame(Overall="OVERALL", size = 1, color = pointcolor)
    names(overall)[1:2] <- c("OVERALL", "SAME")
 
    # Chart function #
@@ -26,7 +25,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
                         group = groupcolor,
                         type = plottype,
                         margin = list(left = 80, bottom = 80),
-                        showControls = FALSE,
+                        showControls = TRUE,
                         showDistX = TRUE,
                         showDistY = TRUE,
                         height = 400, 
