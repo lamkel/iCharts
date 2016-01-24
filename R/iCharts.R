@@ -8,7 +8,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
   
   # Work on test data in dropbox #
   dbcsv <- "testdata_scatterchart.csv"  
-  mykey <- "qcbiamjetc7tvbc"
+  mykey <- "k0rud5ehlmgaxnn"
   dat <- repmis::source_DropboxData(dbcsv, key=mykey, sep=",", header=TRUE)
   
 
@@ -24,7 +24,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
                         data = cbind(dat, overall), 
                         group = groupcolor,
                         type = plottype,
-                        margin = list(left = 80, bottom = 80),
+                        margin = list(left = 80, bottom = 100),
                         showControls = TRUE,
                         showDistX = TRUE,
                         showDistY = TRUE,
@@ -33,18 +33,14 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    
    eval(parse(text = paste0("p1$chart(size = '#! function(d){return d.", groupsize, "} !#')")))
    
-   if (groupcolor == "OVERALL") {
-     p1$chart(color = '#! function(d){return d.color} !#')
-   }
-   
-   p1$chart(
-     sizeRange = c(pointsize, 50 * pointsize),
-     margin = list(left = 80, bottom = 80),
-     showControls = FALSE,
-     showDistX = TRUE,
-     showDistY = TRUE
-   ) 
-   
+  # if (groupcolor == "OVERALL") {
+  #   sizeRange = c(10* pointsize, 100 * pointsize)
+  #   p1$chart(color = '#! function(d){return d.color} !#')
+  # } else {
+  #   sizeRange = c(10* pointsize, 100 * pointsize)
+  #   p1$chart(color = '#! function(d){return d.color} !#')     
+  # }
+
    p1$xAxis(axisLabel = xvalue)
    p1$yAxis(axisLabel = yvalue)
    
