@@ -16,8 +16,14 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    chrvars <- names(dat)[which(sapply(dat, class) %in% c("character","logical"))] # Can be expanded (e.g. dates) #
       
    # Run before generating plots #
-   overall <- data.frame(Overall="OVERALL", size = 1, pointcolor = pointcolor)
+   overall <- data.frame(Overall="OVERALL", size = 1)
    names(overall)[1:2] <- c("OVERALL", "SAME")
+   
+   # If choosing one colour only add color column #
+
+   if (groupcolor == "OVERALL") {
+     overall[,"color"] <- pointcolor
+   }   
 
    # Chart function #
    p1 <- rCharts::nPlot(as.formula(paste(yvalue,"~",xvalue)),  
@@ -34,9 +40,9 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    eval(parse(text = paste0("p1$chart(size = '#! function(d){return d.", groupsize, "} !#')")))
    p1$chart(sizeRange = c(10* pointsize, 100 * pointsize))
       
-   if (groupcolor == "OVERALL") {
-     p1$chart(color = '#! function(d){return d.pointcolor} !#')
-     }
+  # if (groupcolor == "OVERALL") {
+  #   p1$chart(color = '#! function(d){return d.pointcolor} !#')
+  #   }
 
    p1$xAxis(axisLabel = xvalue)
    p1$yAxis(axisLabel = yvalue)
