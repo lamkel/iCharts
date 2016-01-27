@@ -36,7 +36,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    
    eval(parse(text = paste0("p1$chart(size = '#! function(d){return d.", groupsize, "} !#')")))
    p1$chart(sizeRange = c(10* pointsize, 100 * pointsize))
-   p1$chart(showControls=FALSE, showDistX = TRUE, showDistY = TRUE)
+   p1$chart(showControls=TRUE, showDistX = TRUE, showDistY = TRUE)
 
    p1$xAxis(axisLabel = xvalue)
    p1$yAxis(axisLabel = yvalue)
