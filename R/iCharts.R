@@ -31,7 +31,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
                         group = groupcolor,
                         type = plottype,
                         margin = list(left = 80, bottom = 100),
-                        showControls = TRUE,
+                        showControls = FALSE,
                         showDistX = FALSE,
                         showDistY = FALSE,
                         height = 400, 
