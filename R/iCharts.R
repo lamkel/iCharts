@@ -40,25 +40,16 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    eval(parse(text = paste0("p1$chart(size = '#! function(d){return d.", groupsize, "} !#')")))
    p1$chart(sizeRange = c(10* pointsize, 100 * pointsize))
       
-  # if (groupcolor == "OVERALL") {
-  #   p1$chart(color = '#! function(d){return d.pointcolor} !#')
-  #   }
-
    p1$xAxis(axisLabel = xvalue)
    p1$yAxis(axisLabel = yvalue)
 
    # Add Custom tooltip #
       
-   tooltip.output <- paste0("#! function(){return '", xvalue, ": ' + this.point.xvalue + '<br>", 
-                                                      yvalue, ": ' + this.point.yvalue ;} !#")
+   tooltip.output <- paste0("#! function(key, x, y){return '", xvalue, ": ' + xvalue + '<br>", 
+                                                               yvalue, ": ' + yvalue ;} !#")
    
+   p1$chart(tooltipContent = tooltip.output)
 
-   p1$tooltip(borderWidth=0, 
-              followTouchMove=TRUE,
-              followPointer=TRUE,  
-              shared = FALSE,
-              formatter = tooltip.output)
-   
    # Avoid using addcontrols to retrieve control values #
    # Use save instead #
    
