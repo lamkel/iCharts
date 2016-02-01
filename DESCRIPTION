@@ -11,8 +11,5 @@ Imports:
   rCharts,
   htmlwidgets,
   repmis
-Collate:
-  iCharts_HighCharts.R,
-  readcsvnew.R
-  
+
 
