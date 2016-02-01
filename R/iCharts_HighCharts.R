@@ -1,4 +1,4 @@
-# NVD3 scatterChart #
+# HighCharts Scatter Plot #
 
 InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
   
