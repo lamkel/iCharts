@@ -54,18 +54,7 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    return(p1)
 }   
 
-saveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
- p1 <- InteractiveChart(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
- p1$set(height = 700) 
- p1$save('output.html', cdn = T) # To pull $scope.controls #
-   return(invisible()) 
-} 
 
-inlineChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
- p1 <- InteractiveChart(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
- p1$set(height = 650) 
- paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
-} 
 
 
 
