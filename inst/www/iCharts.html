@@ -66,7 +66,7 @@
  
 <script>
 function iChartsCtrl($scope){
-    $scope.dat = [ "http://localhost:6180/ocpu/tmp/x0aebca3a54/R/.val/json" ]
+    $scope.dats = [ "http://localhost:6180/ocpu/tmp/x0aebca3a54/R/.val/json" ]
     $scope.xvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
     $scope.yvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
  //   $scope.plottypes = [ "scatterChart", "multiBarChart"]
@@ -76,6 +76,7 @@ function iChartsCtrl($scope){
     $scope.pointsizes = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
     $scope.groupsizes = [ "SAME", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
     
+    $scope.dat = $scope.dats[0]
     $scope.xvalue = $scope.xvalues[0]
     $scope.yvalue = $scope.yvalues[1]
     $scope.plottype = $scope.plottypes[0] 
