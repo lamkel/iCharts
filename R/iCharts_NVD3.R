@@ -1,6 +1,6 @@
 # NVD3 scatterChart #
 
-InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
+InteractiveChart.nvd3 <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
   
   # communicate with Tyler to seek location of file #
   #   dat <- data.table::fread("C:/Users/Kelvin/Dropbox/Statistics Solutions (my own Folder)/testdata_scatterchart.csv",
@@ -54,7 +54,18 @@ InteractiveChart <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, p
    return(p1)
 }   
 
+saveChart.nvd3 <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
+  p1 <- InteractiveChart.nvd3(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+  p1$set(height = 700) 
+  p1$save('output.html', cdn = T) # To pull $scope.controls #
+  return(invisible()) 
+} 
 
+inlineChart.nvd3 <- function(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
+  p1 <- InteractiveChart.nvd3(xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+  p1$set(height = 650) 
+  paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
+} 
 
 
 
