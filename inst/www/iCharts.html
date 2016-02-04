@@ -65,9 +65,6 @@
  </div>
  
 <script>
-
-var dat = "http://localhost:9637/ocpu/tmp/x0716ac8832/R/.val/json"
-
 function iChartsCtrl($scope){
     $scope.xvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
     $scope.yvalues = [ "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
@@ -87,7 +84,7 @@ function iChartsCtrl($scope){
     $scope.groupsize = $scope.groupsizes[0]
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {dat: dat,
+    var req = ocpu.rpc("inlineChart",  {dat: "http://localhost:9637/ocpu/tmp/x0716ac8832/R/.val/json",
                                         xvalue: $scope.xvalue, 
                                         yvalue: $scope.yvalue,
                                         plottype: $scope.plottype,                                     
