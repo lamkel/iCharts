@@ -21,7 +21,7 @@ dyn.param.list <- function(dat){
    
 # HighCharts Scatter Plot #         
 
-InteractiveChart <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
+InteractiveChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
 
   # Run before generating plots #
   overall <- data.frame(Overall="OVERALL", size = 1)
@@ -56,8 +56,8 @@ InteractiveChart <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcol
    return(p1)
 }   
 
-inlineChart <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
- p1 <- InteractiveChart(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+inlineChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
+ p1 <- InteractiveChart.hc(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
  p1$set(height = 650) 
  paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 
