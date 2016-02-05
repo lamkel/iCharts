@@ -10,6 +10,7 @@ License: MIT
 Imports:
   rCharts,
   htmlwidgets,
-  jsonlite
+  jsonlite,
+  repmis
 
 
