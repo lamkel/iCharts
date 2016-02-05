@@ -32,8 +32,10 @@ InteractiveChart <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcol
   if (groupcolor == "OVERALL") {
    overall[,"color"] <- pointcolor
   }   
-  rdat <- jsonlite::fromJSON("http://localhost:9637/ocpu/tmp/x0716ac8832/R/.val/json")
-#  rdat <- jsonlite::fromJSON(dat)
+  
+  dbcsv <- "testdata_scatterchart.csv"  
+  mykey <- "k0rud5ehlmgaxnn"
+  rdat <- repmis::source_DropboxData(dbcsv, key=mykey, sep=",", header=TRUE)
   
    # Chart function #
    p1 <- rCharts::nPlot(as.formula(paste(yvalue,"~",xvalue)),  
