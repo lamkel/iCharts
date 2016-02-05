@@ -7,7 +7,7 @@ dyn.param.list <- function(dat){
   rdat <- jsonlite::fromJSON(dat)
   numvars <- names(rdat)[which(sapply(rdat, class) %in% c("integer","numeric"))] # Can be expanded #
   chrvars <- names(rdat)[which(sapply(rdat, class) %in% c("character","logical"))] # Can be expanded (e.g. dates) #
-  return(jsonlite::toJSON(list("$scope.dat"=dat,
+  return(jsonlite::toJSON(list("dat"=dat,
                                "$scope.xvalues" = numvars, 
                                "$scope.yvalues" = numvars,
                                "$scope.plottypes" = c("scatterChart"),
@@ -32,8 +32,8 @@ InteractiveChart <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcol
   if (groupcolor == "OVERALL") {
    overall[,"color"] <- pointcolor
   }   
-
-  rdat <- jsonlite::fromJSON(dat)
+  rdat <- jsonlite::fromJSON("http://localhost:9637/ocpu/tmp/x0716ac8832/R/.val/json")
+#  rdat <- jsonlite::fromJSON(dat)
   
    # Chart function #
    p1 <- rCharts::nPlot(as.formula(paste(yvalue,"~",xvalue)),  

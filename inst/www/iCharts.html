@@ -84,8 +84,7 @@ function iChartsCtrl($scope){
     $scope.groupsize = $scope.groupsizes[0]
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart",  {dat: "http://localhost:9637/ocpu/tmp/x0716ac8832/R/.val/json",
-                                        xvalue: $scope.xvalue, 
+    var req = ocpu.rpc("inlineChart",  {xvalue: $scope.xvalue, 
                                         yvalue: $scope.yvalue,
                                         plottype: $scope.plottype,                                     
                                         pointcolor: $scope.pointcolor,
