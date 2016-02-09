@@ -9,7 +9,7 @@ Run the apps by running the followings:
 ```S
 devtools::install_github('lamkel/iCharts')
 library(opencpu)
-opencpu$browse('/library/iCharts/www/iCharts.html')
+opencpu$browse('/library/iCharts/www/iCharts_HC.html')
 ```
 
 
