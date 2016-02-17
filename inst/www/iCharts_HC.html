@@ -71,7 +71,7 @@ function iChartsCtrl($scope){
     $scope.plottypes = [ "scatter", "bubble"]
     $scope.pointcolors = [ "blue", "green", "red", "orange", "black"]
     $scope.groupcolors = [ "OVERALL", "MetroMicroRural", "Stakeholder", "Region", "EcTier"]
-    $scope.pointsizes = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+    $scope.pointsizes = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 20 ]
     $scope.groupsizes = [ "SAME", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
     
     $scope.xvalue = $scope.xvalues[0]
@@ -79,14 +79,13 @@ function iChartsCtrl($scope){
     $scope.plottype = $scope.plottypes[0] 
     $scope.pointcolor = $scope.pointcolors[0]
     $scope.groupcolor = $scope.groupcolors[0]
-    $scope.pointsize = $scope.pointsizes[4]
+    $scope.pointsize = $scope.pointsizes[1]
     $scope.groupsize = $scope.groupsizes[0]
 
   $scope.makeChart = function(){
     var req = ocpu.rpc("inlineChart.nvd3",  {xvalue: $scope.xvalue, 
                                              yvalue: $scope.yvalue,
-                                             plottype: $scope.plottype,                                     
-                                             pointcolor: $scope.pointcolor,
+                                             plottype: $scope.plottype,                                                                              pointcolor: $scope.pointcolor,
                                              groupcolor: $scope.groupcolor,
                                              pointsize: $scope.pointsize,
                                              groupsize: $scope.groupsize},

@@ -11,6 +11,6 @@ Imports:
   rCharts,
   htmlwidgets,
   jsonlite,
-  repmis
+  gsheet
 
 

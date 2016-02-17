@@ -20,58 +20,90 @@ dyn.param.list <- function(dat){
                                "$scope.groupsizes" = numvars)))}	
 
 
-# Main Plot Engire #
+# Main Plot Engine #
 
-InteractiveChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){
+InteractiveChart.hc <- function(dat, xvalue, yvalue, 
+                                plottype, pointcolor, groupcolor, pointsize, groupsize, 
+                                addRegline){
 
-  # Work on test data in dropbox #
-  
-  dbcsv <- "testdata_scatterchart.csv"  
-  mykey <- "k0rud5ehlmgaxnn"
-  rdat <- repmis::source_DropboxData(dbcsv, key=mykey, sep=",", header=TRUE)
+  # Work on test data in google drive #
+  gURL <- "https://docs.google.com/spreadsheets/d/1KSl4z1msk0EdVhh0JOWNkWp8vCyqjf14LLIcaYV6Wl0/edit?usp=sharing"
+  rdat <- gsheet::gsheet2tbl(gURL)
   
   # Run before generating plots #
-
-  overall <- data.frame(Overall="OVERALL", size = 1)
+  overall <- data.frame(Overall="OVERALL", size = 1, stringsAsFactors=FALSE)
   names(overall)[1:2] <- c("OVERALL", "SAME")
-   
-  # Chart function #
+  rdat <- cbind(rdat, overall)
   
-  h1 <- rCharts::hPlot(x = xvalue, 
-                       y = yvalue,
-                       data = cbind(rdat, overall), 
-                       type = plottype, 
-                       group = groupcolor, 
-                       size = groupsize,
-                       radius = pointsize,
-                       margin = list(left = 80, bottom = 100),
-                       height = 400, 
-                       width = 650)
+  # Fill in missing values for the legend order #
+  rdat[which(rdat[groupcolor]==""), groupcolor] <- "Missing Value"
+  
+  # Number of unique groupcolor levels #
+  groupcolorl <- nrow(unique(rdat[groupcolor]))
+
+  # Main plot function #
+  
+  if (plottype %in% c("scatter","bubble")) {
+    
+   # Adding Regression Line #
+
+    if (addRegline == "YES") {
+     yvar <- rdat[,yvalue]
+     xvar <- rdat[,xvalue]
+     regresults <- lm(yvar ~ xvar)
+     regresults <- data.frame(rdat[xvalue], 
+                              predict(regresults, newdata=data.frame(yvar,xvar)), 
+                              " _Regression line_ ", 0)
+     names(regresults)[2:4] <- c(yvalue, groupcolor, groupsize)
+     rdat <- rbind(rdat[,c(xvalue, yvalue, groupcolor, groupsize)], regresults)
+     plottype.final <- c("line", rep(plottype,groupcolorl))
+    } else {
+      rdat <- rdat[,c(xvalue, yvalue, groupcolor, groupsize)]
+      plottype.final <- plottype     
+    }
+    
+     if (plottype == "scatter") {
+       plottitle <- paste("Scatter Plot with", yvalue, "as Y-axis and", xvalue, "as X-axis, group by", groupcolor)
+     } else {
+       plottitle <- paste("Bubble Chart with", yvalue, "as Y-axis and", xvalue, "as X-axis, group by", groupcolor, "and bubble size by", groupsize)       
+     }
+    
+     h1 <- rCharts::hPlot(x = xvalue, 
+                          y = yvalue,
+                          data = rdat, 
+                          type = plottype.final, 
+                          group = groupcolor, 
+                          size = groupsize,
+                          radius = pointsize,
+                          title = plottitle)
+
+     # If choosing one colour only add color column # 
+     # Group all options into one plotOptions statement to prevent overwritting the previous #
+  
+     if (groupcolor == "OVERALL") {
+       if (plottype == "scatter") {
+        h1$plotOptions(scatter = list(marker = list(symbol = 'circle'), color = pointcolor))
+       } else {
+        h1$plotOptions(bubble = list(color = pointcolor)) 
+       }   
+     } else {
+        h1$plotOptions(scatter = list(marker = list(symbol = 'circle')))
+     }
+  }
   
   h1$chart(zoomType = "xy") # Add zoom capability #
   h1$exporting(enabled = T)
-  #h1$legend(align = 'right', verticalAlign = 'top', layout = 'vertical')
-  h1$plotOptions(scatter = list(marker = list(symbol = 'circle')))
-
-  # If choosing one colour only add color column #
+  return(h1)
   
-  if (groupcolor == "OVERALL") {
-    h1$plotOptions(series = list(color = pointcolor))
-  }   
-    
-   return(h1)
 }   
 
-inlineChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize){ 
-  p1 <- InteractiveChart.hc(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize) 
+inlineChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize, addRegline){ 
+  p1 <- InteractiveChart.hc(dat, xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize, addRegline) 
   p1$set(height = 650) 
   paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 
 
 
 
-
-  
-   		
 
 
