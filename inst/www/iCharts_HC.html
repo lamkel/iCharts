@@ -58,6 +58,9 @@
           <label><b>Select Group Size :</b></label>
     		   <select class='form form-control' ng-model="groupsize" 
             ng-options="groupsize for groupsize in groupsizes"></select><br>
+          <label><b>Add Regression Line? :</b></label>
+    		   <select class='form form-control' ng-model="addRegline" 
+            ng-options="addRegline for addRegline in addReglines"></select><br>  
         </div>
    <div class='col-md-9'>
      <div id='iCharts'></div>
@@ -73,6 +76,7 @@ function iChartsCtrl($scope){
     $scope.groupcolors = [ "OVERALL", "MetroMicroRural", "Stakeholder", "Region", "EcTier"]
     $scope.pointsizes = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 20 ]
     $scope.groupsizes = [ "SAME", "Q1Culture", "Q1Infrastructure", "Q1Leaders", "Q1Funding", "Yrs1", "Yrs2", "Yrs3", "Yrs4", "RuralUrbanMixed", "CountyName", "Population", "q22summed", "q23summed", "q24summed", "TOTALq1_24"]
+    $scope.addReglines = [ "NO", "YES"]
     
     $scope.xvalue = $scope.xvalues[0]
     $scope.yvalue = $scope.yvalues[1]
@@ -81,14 +85,16 @@ function iChartsCtrl($scope){
     $scope.groupcolor = $scope.groupcolors[0]
     $scope.pointsize = $scope.pointsizes[1]
     $scope.groupsize = $scope.groupsizes[0]
+    $scope.addRegline = $scope.addReglines[0]
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("inlineChart.nvd3",  {xvalue: $scope.xvalue, 
-                                             yvalue: $scope.yvalue,
-                                             plottype: $scope.plottype,                                                                              pointcolor: $scope.pointcolor,
-                                             groupcolor: $scope.groupcolor,
-                                             pointsize: $scope.pointsize,
-                                             groupsize: $scope.groupsize},
+    var req = ocpu.rpc("inlineChart.hc",  {xvalue: $scope.xvalue, 
+                                           yvalue: $scope.yvalue,
+                                           plottype: $scope.plottype,                                                                          pointcolor: $scope.pointcolor,
+                                           groupcolor: $scope.groupcolor,
+                                           pointsize: $scope.pointsize,
+                                           groupsize: $scope.groupsize,
+                                           addRegline: $scope.addRegline},
                        function(output){   
                          $('#iCharts').html(output)
                        }).fail(function(text){
@@ -96,7 +102,7 @@ function iChartsCtrl($scope){
                        });
   }
   
-  $scope.$watchCollection('[xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize]', function(newValues){
+  $scope.$watchCollection('[xvalue, yvalue, plottype, pointcolor, groupcolor, pointsize, groupsize, addRegline]', function(newValues){
     $scope.makeChart({xvalue: newValues[0], 
                       yvalue: newValues[1], 
                       plottype: newValues[2], 
@@ -104,6 +110,7 @@ function iChartsCtrl($scope){
                       groupcolor: newValues[4], 
                       pointsize: newValues[5],
                       groupsize: newValues[6]
+                      addRegline: newValues[7]
                      })
     console.log(newValues)
   })
