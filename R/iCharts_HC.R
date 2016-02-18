@@ -84,13 +84,13 @@ InteractiveChart.hc <- function(dat, xvalue, yvalue,
        if (plottype == "scatter") {
         h1$plotOptions(scatter = list(marker = list(symbol = 'circle'), color = pointcolor))
        } else {
-        h1$plotOptions(bubble = list(color = pointcolor, minSize = 3, maxsize = 50)) 
+        h1$plotOptions(bubble = list(color = pointcolor, minSize = 1, maxsize = 4)) 
        }   
      } else {
        if (plottype == "scatter") {
          h1$plotOptions(scatter = list(marker = list(symbol = 'circle')))
        } else {
-         h1$plotOptions(bubble = list(minSize = 3, maxsize = 50)) 
+         h1$plotOptions(bubble = list(minSize = 1, maxsize = 4)) 
        }   
      }
   }
