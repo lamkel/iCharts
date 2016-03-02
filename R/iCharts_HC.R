@@ -53,7 +53,7 @@ InteractiveChart.hc <- function(dat, xvalue, yvalue,
      regresults <- lm(yvar ~ xvar)
      regresults <- data.frame(rdat[xvalue], 
                               predict(regresults, newdata=data.frame(yvar,xvar)), 
-                              "% Regression Line %", 0)
+                              "0_ Regression Line _0", 0)
      names(regresults)[2:4] <- c(yvalue, groupcolor, groupsize)
      rdat <- rbind(rdat[,c(xvalue, yvalue, groupcolor, groupsize)], regresults)
      plottype.final <- c("line", rep(plottype,groupcolorl))
