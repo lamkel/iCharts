@@ -107,8 +107,8 @@ inlineChart.hc <- function(dat, xvalue, yvalue, plottype, pointcolor, groupcolor
   paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 
 
-
-InteractiveChart.hc(xvalue="Yrs4", yvalue="Yrs1", groupcolor="Stakeholder", pointcolor="red", plottype="scatter", groupsize="SAME", pointsize=7, addRegline="YES")  
+#http://ec2-52-25-237-19.us-west-2.compute.amazonaws.com/ocpu/library/iCharts/www/iCharts_HC.html
+#InteractiveChart.hc(xvalue="Yrs4", yvalue="Yrs1", groupcolor="Stakeholder", pointcolor="red", plottype="scatter", groupsize="SAME", pointsize=7, addRegline="YES")  
 
 
 
