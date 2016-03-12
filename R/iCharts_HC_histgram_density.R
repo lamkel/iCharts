@@ -36,7 +36,7 @@ if (yvalue == "Frequency") {
 
 # Main Plot Engine #
 
-hc <- highchart(height = 650) %>% 
+hc <- highchart() %>% 
   hc_title(text = paste("Distribution of", xvalue)) %>% 
   hc_xAxis(title = list(text = xvalue)) %>% 
   hc_yAxis(title = list(text = yvalue)) %>% 
