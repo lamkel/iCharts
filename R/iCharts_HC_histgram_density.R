@@ -87,24 +87,11 @@ hc <- highchart(height = 650) %>%
 
 }
 
-knit.print.htmlwidget.hc.hd <- function(xvalue, yvalue, bwidth, theme){
-  options(pandoc.stack.size = "2048m")
+iframe.hc.hd <- function(xvalue, yvalue, bwidth, theme){
   p1 <- InteractiveChart.hc.hd(xvalue, yvalue, bwidth, theme) 
-  wdgtclass <- setdiff(class(p1), "htmlwidget")[1]
-  wdgtrndnm <- paste0(sample(letters, size = 7), collapse = "")
-  wdgtfname <- sprintf("wdgt_%s_%s.html", wdgtclass, wdgtrndnm)
-  htmlwidgets::saveWidget(p1, file = wdgtfname, selfcontained = TRUE, background = "transparent")
-  iframetxt <- sprintf("<iframe  frameBorder=\"0\" src=\"%s\" width=\"100%%\" height=\"650\"></iframe>", wdgtfname)
-  #knitr::asis_output(iframetxt)
-  capture.output(iframetxt)
+  htmlwidgets::saveWidget(p1, file = "histdensity.html", selfcontained = FALSE, background = "transparent")
 }
 
-inlineChart.hc.hd <- function(xvalue, yvalue, bwidth, theme){ 
-  p1 <- InteractiveChart.hc.hd(xvalue, yvalue, bwidth, theme) 
-  paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
-} 
-
-  
 ##############################################################################################################
 ############################################### For Production ###############################################
 ##############################################################################################################

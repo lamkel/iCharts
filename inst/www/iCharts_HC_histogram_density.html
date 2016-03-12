@@ -53,7 +53,7 @@
             ng-options="theme for theme in themes"></select><br>
          </div>
    <div class='col-md-9'>
-     <div id='iCharts'></div>
+    <iframe src="about:blank"></iframe>
    </div>
  </div>
  
@@ -70,13 +70,13 @@ function iChartsCtrl($scope){
     $scope.theme = $scope.themes[0]
 
   $scope.makeChart = function(){
-    var req = ocpu.rpc("knit.print.htmlwidget.hc.hd",  
+    var req = ocpu.call("iframe.hc.hd",  
                                              {xvalue: $scope.xvalue, 
                                               yvalue: $scope.yvalue,
                                               bwidth: $scope.bwidth,                                              
                                               theme: $scope.theme},
-                       function(output){   
-                         $('#iCharts').html(output)
+                       function(session){   
+                        $("iframe").attr('src', session.getFileURL("histdensity.html"));
                        }).fail(function(text){
                          alert("Error: " + req.responseText);
                        });
