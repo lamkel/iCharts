@@ -95,7 +95,8 @@ knit.print.htmlwidget.hc.hd <- function(xvalue, yvalue, bwidth, theme){
   wdgtfname <- sprintf("wdgt_%s_%s.html", wdgtclass, wdgtrndnm)
   htmlwidgets::saveWidget(p1, file = wdgtfname, selfcontained = TRUE, background = "transparent")
   iframetxt <- sprintf("<iframe  frameBorder=\"0\" src=\"%s\" width=\"100%%\" height=\"650\"></iframe>", wdgtfname)
-  knitr::asis_output(iframetxt)
+  #knitr::asis_output(iframetxt)
+  capture.output(iframetxt)
 }
 
 inlineChart.hc.hd <- function(xvalue, yvalue, bwidth, theme){ 
