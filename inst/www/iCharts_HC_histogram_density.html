@@ -46,10 +46,10 @@ function iChartsCtrl($scope){
     $scope.bwidths = [ 2, 4, 5, 10, 15, 20]
     $scope.themes = [ "Plain", "Google", "Dotabuff", "Economist", "Gridlight", "Sand Signika", "Dark Unica", "Chalk Board", "fivethirtyeight.com"]
 
-    $scope.xvalue = $scope.xvalues[0]
+    $scope.xvalue = $scope.xvalues[7]
     $scope.yvalue = $scope.yvalues[0]
     $scope.bwidth = $scope.bwidths[4] 
-    $scope.theme = $scope.themes[0]
+    $scope.theme = $scope.themes[1]
 
   $scope.makeChart = function(){
     var req = ocpu.call("iframe.hc.hd",  
