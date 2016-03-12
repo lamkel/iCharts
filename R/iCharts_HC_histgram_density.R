@@ -87,8 +87,8 @@ hc <- highchart() %>%
 
 }
 
-inlineChart.hc.hd <- function(dat, xvalue, yvalue, bwidth, theme){ 
-  p1 <- InteractiveChart.hc.hd(dat, xvalue, yvalue, bwidth, theme) 
+inlineChart.hc.hd <- function(xvalue, yvalue, bwidth, theme){ 
+  p1 <- InteractiveChart.hc.hd(xvalue, yvalue, bwidth, theme) 
   p1$set(height = 650) 
   paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
 } 

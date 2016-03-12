@@ -72,7 +72,7 @@ function iChartsCtrl($scope){
   $scope.makeChart = function(){
     var req = ocpu.rpc("inlineChart.hc.hd",  {xvalue: $scope.xvalue, 
                                               yvalue: $scope.yvalue,
-                                              bwidth: $scope.bwidth,                                                                            
+                                              bwidth: $scope.bwidth,                                              
                                               theme: $scope.theme},
                        function(output){   
                          $('#iCharts').html(output)
