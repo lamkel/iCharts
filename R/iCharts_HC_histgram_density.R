@@ -182,8 +182,7 @@ InteractiveChart.hc.hd.prod <- function(dat, xvalue, yvalue, bwidth, theme){
   
 }
 
-inlineChart.hc.hd.prod <- function(dat, xvalue, yvalue, bwidth, theme){ 
+iframe.hc.hd.prod <- function(dat, xvalue, yvalue, bwidth, theme){
   p1 <- InteractiveChart.hc.hd.prod(dat, xvalue, yvalue, bwidth, theme) 
-  p1$set(height = 650) 
-  paste(capture.output(p1$show('inline')), collapse ='\n') # Actual function to plot charts #
-} 
+  htmlwidgets::saveWidget(p1, file = "histdensity.html", selfcontained = FALSE, background = "transparent")
+}
