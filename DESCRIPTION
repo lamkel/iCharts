@@ -10,8 +10,7 @@ License: MIT
 Imports:
   rCharts,
   htmlwidgets,
-  jsonlite,
-  gsheet,
-  highcharter
+  gsheet
+
 
 
