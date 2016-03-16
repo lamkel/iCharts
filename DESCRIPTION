@@ -11,6 +11,7 @@ Imports:
   rCharts,
   htmlwidgets,
   jsonlite,
-  gsheet
+  gsheet,
+  highcharter
 
 
