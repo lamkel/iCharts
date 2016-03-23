@@ -1,25 +1,5 @@
 # HighCharts #
 
-
-# Dynamically generate drop down selection list #
-
-dyn.param.list <- function(dat){		
-  
-  # dat in json format from /R/.val/json #		
-  
-  rdat <- jsonlite::fromJSON(dat)		
-  numvars <- names(rdat)[which(sapply(rdat, class) %in% c("integer","numeric"))] # Can be expanded #		
-  chrvars <- names(rdat)[which(sapply(rdat, class) %in% c("character","logical"))] # Can be expanded (e.g. dates) #		
-  return(jsonlite::toJSON(list("dat"=dat,		
-                               "$scope.xvalues" = numvars, 		
-                               "$scope.yvalues" = numvars,		
-                               "$scope.plottypes" = c("scatterChart"),		
-                               "$scope.pointcolors" = c("blue", "green", "red", "orange", "black"),		
-                               "$scope.groupcolors" = chrvars,		
-                               "$scope.pointsizes" = c(1:10),		
-                               "$scope.groupsizes" = numvars)))}	
-
-
 # Main Plot Engine #
 
 InteractiveChart.hc <- function(dat, xvalue, yvalue, 
