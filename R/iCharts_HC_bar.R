@@ -45,8 +45,7 @@ if (yvalue != "_NONE_") {
  }
  
  xnames <- row.names(plotdata)
- y.title <- yvalue
- main.title <- paste(yvalue, "Frequency by", xvalue, "Group")
+ main.title <- paste(xvalue, "Frequency by", yvalue, "Group")
  data.series <- paste(
    paste0("hc_add_series(data = plotdata[,'", names(plotdata), "'], name = '", names(plotdata), "')"),
    collapse = " %>% ")
@@ -60,7 +59,6 @@ if (yvalue != "_NONE_") {
   }  
   
   xnames <- as.character(plotdata[,"Var1"])
-  y.title <- "Frequency"
   main.title <- paste("Frequency by", xvalue, "Categories")
   data.series <- "hc <- hc %>% hc_add_series(data = plotdata[,'Freq'], name = xvalue)"
   
@@ -72,7 +70,7 @@ hc <- highchart() %>%
   hc_chart(type = "column") %>%
   hc_title(text = main.title) %>% 
   hc_xAxis(categories = xnames) %>% 
-  hc_yAxis(title = list(text = y.title), stackLabels = list(enabled = FALSE)) %>% 
+  hc_yAxis(title = list(text = "Frequency"), stackLabels = list(enabled = FALSE)) %>% 
   hc_chart(zoomType = "xy") %>%
   hc_exporting(enabled = TRUE) 
   eval(parse(text = data.series))
