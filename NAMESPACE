@@ -1,5 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 import(rCharts)
 import(htmlwidgets)
+import(questionr)
 import(gsheet)
 

@@ -10,7 +10,8 @@ License: MIT
 Imports:
   rCharts,
   htmlwidgets,
-  gsheet
+  gsheet,
+  questionr
 
 
 
